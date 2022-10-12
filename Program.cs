@@ -92,5 +92,33 @@ public class cardHolder
             Console.WriteLine("Current balance: "+currentUser.getBalance());
         }
         List<cardHolder> cardHolders = new List<cardHolder>();
+        cardHolders.Add(new cardHolder("4532772818527395",1234,"John","Griffith",150.31));
+        cardHolders.Add(new cardHolder("4532772818527396",4321,"Ashley","Jones",321.13));
+        cardHolders.Add(new cardHolder("4532772818527397",9999,"Frida","Dickerson",105.59));
+        cardHolders.Add(new cardHolder("4532772818527398",2468,"Muneeb","Harding",851.84));
+        cardHolders.Add(new cardHolder("4532772818527399",4826,"Dawn","Smith",54.27));
+        //Prompt user
+        Console.WriteLine("Welcome to SimpleATM");
+        Console.WriteLine("Please insert your debit card: ");
+        String debitCardNum = "";
+        cardHolder currentUser;
+        while (true)
+        {
+            try
+            {
+                debitCardNum = Console.ReadLine();
+                //Check against our db
+                currentUser = cardHolders.FirstOrDefault(a => a.cardNum == debitCardNum);
+                if (currentUser != null) { break; }
+                else
+                {
+                    Console.WriteLine("Card not recognized. Please try again");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Card not recognized. Please try again");
+            }
+        }
     }
 }
